@@ -25,7 +25,7 @@ cash --|> buy : <<extends>>
 card --|> buy : <<extends>>
 checking --> Fine :<<invoke>>
 
-Passanger -- getIn
+Passenger -- getIn
 Passenger -- getOut
 Passenger -- buy
 Passenger -- info
