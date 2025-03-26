@@ -1,0 +1,45 @@
+@startuml
+
+actor Passenger 
+actor "Ticket office" as TOffice
+actor "Dissabled Passenger" as DissabledPassenger
+actor Controller
+actor "Card System" as Bank
+
+usecase "Ticket Validation" as validation
+usecase "Buy ticket" as buy 
+usecase "Get information" as info 
+usecase Fine 
+usecase "Check the ticket" as checking
+usecase "Buy with cash" as cash 
+usecase "Buy with card" as card 
+usecase "Get into a train" as getIn 
+usecase "Step out of the train" as getOut
+usecase "Associated get in/out a train" as assInOut
+
+DissabledPassenger --|> Passenger
+
+assInOut --|> getIn :<<extends>>
+assInOut --|> getOut :<<extends>>
+cash --|> buy : <<extends>>
+card --|> buy : <<extends>>
+checking --> Fine :<<invoke>>
+
+Passanger -- getIn
+Passenger -- getOut
+Passenger -- buy
+Passenger -- info
+Passenger -- checking
+Passenger -- Fine
+Passenger -- validation
+
+TOffice -- buy
+TOffice -- info
+Controller -- checking
+Controller -- Fine
+Controller -- assInOut
+
+Bank -- card
+DissabledPassenger -- assInOut
+
+@enduml
