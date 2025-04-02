@@ -1,0 +1,47 @@
+@startuml
+
+class Passenger{
+    'ticket : Ticket[]
+    showTicket():Ticket
+}
+class DissabledPassenger
+class CardSystem{
+    authorizePayment(cardInfo):bool
+}
+class Controller
+class TicketOffice{
+    pay(from:String, to:String) :Ticket
+}
+
+class Ticket {
+    from : String 
+    to : String
+    price : double
+    validated : bool
+    validate()
+}
+class FineRecepit
+class Train {
+    startingStation : Station
+    endStation : Station
+    actualStation : Station
+
+    stepIn(passenger:Passenger)
+    stepOut(passenger:Passenger)
+}
+class ScheduleInformation
+
+DissabledPassenger --|> Passenger
+Passenger "ticket[]" o-- Ticket
+TicketOffice ..> Ticket : > creates
+Controller ..> FineRecepit : > creates
+TicketOffice -- CardSystem
+
+Train "passengers" o-- Passenger
+Train -- Controller 
+
+
+ScheduleInformation o-- Train
+ScheduleInformation o-- Station
+
+@enduml
