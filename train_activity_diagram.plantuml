@@ -1,0 +1,17 @@
+@startuml
+'Dissabled person stepp into a train
+(*) --> "Person got on the station"
+--> if "Person needs help"
+--> [yes] "Ask for help in mobile app"
+--> "Add data about train"
+--> "Wait for Assistant"
+--> "The person is assisted"
+--> "Elevator in a train is initialized"
+--> "Go with assistant to a place in train"
+--> "Train depart" as TrainDepart
+--> (*)
+else
+--> [no] "Step into a train"
+--> TrainDepart
+endif
+@enduml
