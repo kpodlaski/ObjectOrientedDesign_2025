@@ -4,14 +4,20 @@
 --> if "Person needs help"
 --> [yes] "Ask for help in mobile app"
 --> "Add data about train"
+--> ===A1===
 --> "Wait for Assistant"
 --> "The person is assisted"
---> "Elevator in a train is initialized"
+
 --> "Go with assistant to a place in train"
+--> ===A2===
 --> "Train depart" as TrainDepart
 --> (*)
 else
 --> [no] "Step into a train"
 --> TrainDepart
 endif
+===A1=== --> "Inform tain staff about need of assistance"
+--> "Operate train elevator"
+--> ===A2===
+
 @enduml
