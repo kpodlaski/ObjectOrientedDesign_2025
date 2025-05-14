@@ -1,0 +1,40 @@
+@startuml
+state Passenger {
+    state State2
+    state State3 
+    state Fine
+}
+
+state Office {
+    state State1
+}
+
+state "Ticket Office" as Office
+
+state "Initial Ticket" as State1
+
+State1 : ticket is created
+State1 : validated = false
+State1 : is stored by Ticket Office
+
+[*] -> State1 : start of transaction
+
+state "Ticket" as State2
+
+State2 : validated = false
+State2 : is stored in Passenger Class
+
+State1 -> State2 : transaction is successfull
+State1 -> [*] : failed transaction
+
+state "Validated Ticket" as State3
+
+State3 : validated = true
+State3 : is stored in Passenger Class
+
+State2 -down-> State3 : passenger validate ticket
+
+State2 -> Fine : controll
+State3 -> State3 : controll
+
+@enduml
