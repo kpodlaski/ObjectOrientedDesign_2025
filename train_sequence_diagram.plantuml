@@ -1,0 +1,20 @@
+@startuml
+activate Passenger
+Passenger -> System : needAssistance(trainInfo)
+activate System
+System --> Passenger : wait on platform P
+Passenger -> Passenger : moveToPlatform(P)
+System -> Train : prepareForAssistedEntrance(Passenger)
+activate Train
+Train --> System : ok
+System -> Passenger: assistBy(Assistant)
+deactivate System
+Train -> Train : startElevator()
+Train -> Passenger : enterTheTrain()
+Passenger -> Passenger : getIntoASeat()
+Passenger -> Train : finished
+Train -> Train : stopElevator()
+Train -> Train : depart()
+deactivate Train
+deactivate Passenger
+@enduml
